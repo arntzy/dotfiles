@@ -6,6 +6,6 @@ Run these commands to install dotfiles.
 ```
 cd ~
 mkdir dotfiles && cd dotfiles
-curl -O <filepath>
+curl -O https://raw.githubusercontent.com/arntzy/dotfiles/master/setup.sh
 bash ./setup.sh
 ```
