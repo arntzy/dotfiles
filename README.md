@@ -1,11 +1,9 @@
 # dotfiles
-My dotfiles repo is just a shell script.
+This repo contains single configuration dotfiles and a setup.sh script to automatically install and create symlinks.
 
-Run these commands to install dotfiles.
+After cloning this repo in the home directory:
 
 ```
-cd ~
-mkdir dotfiles && cd dotfiles
-curl -O https://raw.githubusercontent.com/arntzy/dotfiles/master/setup.sh
+cd ~/dotfiles
 bash ./setup.sh
 ```
