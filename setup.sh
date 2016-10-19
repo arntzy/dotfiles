@@ -9,17 +9,21 @@ type vim >/dev/null 2>&1 || { echo >&2 "vim is not installed.  Aborting."; exit 
 
 #Clone dotfiles individually
 echo "Cloning arntzy's dotfiles to home directory..."
-echo "Cloning .tmux..."
+echo "Cloning .tmux/..."
 git clone --recursive https://github.com/arntzy/.tmux.git
-echo "Cloning .vim..."
+echo "Cloning .vim/..."
 git clone --recursive https://github.com/arntzy/.vim.git
+echo "Cloning git/..."
+git clone https://github.com/arntzy/git.git
 
 #Create symlinks to dotfiles
 echo "Creating symlinks to dotfiles..."
-ln -s .vim/.vimrc .vimrc
-ln -s .tmux/.tmux.conf .tmux.conf
-ln -s .tmux/.tmux.conf.local .tmux.conf.local
-ln -s dotfiles/.bashrc .bashrc
+ln -sf .vim/.vimrc .vimrc
+ln -sf .tmux/.tmux.conf .tmux.conf
+ln -sf .tmux/.tmux.conf.local .tmux.conf.local
+ln -sf git/.gitconfig ~
+ln -sf git/.gitignore_global ~
+ln -sf dotfiles/.bashrc .bashrc
 
 #Potentially useful leftover files
 #command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
