@@ -19,6 +19,7 @@ echo "Creating symlinks to dotfiles..."
 ln -s .vim/.vimrc .vimrc
 ln -s .tmux/.tmux.conf .tmux.conf
 ln -s .tmux/.tmux.conf.local .tmux.conf.local
+ln -s dotfiles/.bashrc .bashrc
 
 #Potentially useful leftover files
 #command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
