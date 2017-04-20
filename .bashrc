@@ -137,3 +137,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Java Installation
+export JAVA_HOME=${HOME}/Documents/jdk1.8.0_121
+
+# Android Installation
+export ANDROID_HOME=${HOME}/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+export NVM_DIR="/home/arntzy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -24,6 +24,7 @@ ln -sf .tmux/.tmux.conf.local .tmux.conf.local
 ln -sf git/.gitconfig ~
 ln -sf git/.gitignore_global ~
 ln -sf dotfiles/.bashrc .bashrc
+ln -sf dotfiles/.bash_aliases .bash_aliases
 
 #Potentially useful leftover files
 #command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
