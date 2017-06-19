@@ -109,11 +109,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-# alias ll='ls -alF'
-# alias la='ls -A'
-# alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -148,3 +143,26 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 export NVM_DIR="/home/arntzy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/arntzy/anaconda3/bin:$PATH"
+
+###############
+# CSV AND TSV #
+###############
+
+function pretty_csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
+
+function pretty_tsv {
+    column -t -s $'\t' -n "$@" | less -F -S -X -K
+}
+#######
+# FZF #
+#######
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="bfs -type d -nohidden"  
+bind -x '"\C-p": vim $(fzf);'
