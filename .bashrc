@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -8,8 +6,8 @@ case $- in
       *) return;;
 esac
 
-echo "Have a fuckin' bash..."
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$PATH:/opt/etcher-cli"
 
 MYNAME='Aaron Arntz'
 export MYNAME
@@ -22,10 +20,9 @@ if [ -f ~/.git-prompt.sh ]; then
 	  source ~/.git-prompt.sh
 fi
 
-EDITOR=vim
+EDITOR=nvim
 
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -42,7 +39,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -144,8 +141,14 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export NVM_DIR="/home/arntzy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# added by Anaconda3 4.4.0 installer
-export PATH="/home/arntzy/anaconda3/bin:$PATH"
+# Ruby exports
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
+################
+# APPLICATIONS #
+################
+export PATH=${PATH}:~/Applications
 
 ###############
 # CSV AND TSV #
@@ -162,7 +165,17 @@ function pretty_tsv {
 # FZF #
 #######
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="bfs -type d -nohidden"  
-bind -x '"\C-p": vim $(fzf);'
+# export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden -g !{.git,node_modules}'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.ignore'
+export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+export FZF_ALT_C_COMMAND="bfs -type d"  
+bind -x '"\C-p": nvim $(fzf);'
+
+export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
+
+############
+# Anaconda #
+############
+. /home/arntzy/anaconda3/etc/profile.d/conda.sh
