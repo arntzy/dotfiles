@@ -6,8 +6,8 @@ case $- in
       *) return;;
 esac
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH="$PATH:/opt/etcher-cli"
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# export PATH="$PATH:/opt/etcher-cli"
 
 MYNAME='Aaron Arntz'
 export MYNAME
@@ -134,9 +134,12 @@ fi
 export JAVA_HOME=${HOME}/Documents/jdk1.8.0_121
 
 # Android Installation
-export ANDROID_HOME=${HOME}/Android/Sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/home/arntzy/Applications/android-studio/bin
 
 export NVM_DIR="/home/arntzy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -145,10 +148,23 @@ export NVM_DIR="/home/arntzy/.nvm"
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+#########
+# PYENV #
+#########
+export PATH="/home/arntzy/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 ################
 # APPLICATIONS #
 ################
 export PATH=${PATH}:~/Applications
+
+#######
+# GPG #
+#######
+GPG_TTY=`tty`
+export GPG_TTY
 
 ###############
 # CSV AND TSV #
@@ -179,3 +195,5 @@ export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 # Anaconda #
 ############
 . /home/arntzy/anaconda3/etc/profile.d/conda.sh
+source /home/arntzy/Downloads/alacritty/alacritty-completions.bash
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

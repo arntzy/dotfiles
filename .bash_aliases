@@ -32,5 +32,5 @@ alias subupdate="git submodule foreach 'git pull'"
 alias gruv='git remote -v update'
 
 # node
-alias todos="leasot './**/*' -Sx -i './node_modules/**/*'" # display todos recursively in file structure
-alias todosdocs="leasot './**/*' -Sx -i './node_modules/**/*' --reporter markdown > TODO.md" # write to 'todo.md'
+alias todos="leasot './**/*' -Sx -i './venv'" # display todos recursively in file structure
+alias todosdocs="leasot './**/*' -Sx -i './venv' --reporter markdown > TODO.md" # write to 'todo.md'
